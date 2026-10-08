@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 6% 4%;
+    --foreground: 216 44% 91%;
+    --card: 240 6% 6%;
+    --card-foreground: 216 44% 91%;
+    --popover: 240 6% 6%;
+    --popover-foreground: 216 44% 91%;
+    --primary: 0 100% 45%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 5% 12%;
+    --secondary-foreground: 216 44% 91%;
+    --muted: 240 5% 12%;
+    --muted-foreground: 216 20% 65%;
+    --accent: 0 100% 45%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 100% 45%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 240 5% 14%;
+    --input: 240 5% 14%;
+    --ring: 0 100% 45%;
+    --chart-1: 0 100% 45%;
+    --chart-2: 216 44% 91%;
+    --chart-3: 135 100% 50%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.25rem;
+    --font-heading: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+    --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+    --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    --sidebar-background: 240 6% 6%;
+    --sidebar-foreground: 216 44% 91%;
+    --sidebar-primary: 0 100% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 5% 12%;
+    --sidebar-accent-foreground: 216 44% 91%;
+    --sidebar-border: 240 5% 14%;
+    --sidebar-ring: 0 100% 45%;
+  }
+}
+
+@layer utilities {
+  @keyframes status-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 hsl(0 100% 45% / 0.6); }
+    50% { box-shadow: 0 0 0 12px hsl(0 100% 45% / 0); }
+  }
+  .animate-status-pulse { animation: status-pulse 2s ease-out infinite; }
+
+  @keyframes scan-line {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100vh); }
+  }
+  .animate-scan { animation: scan-line 4s linear infinite; }
+
+  @keyframes flicker {
+    0%, 100% { opacity: 1; }
+    48% { opacity: 1; }
+    50% { opacity: 0.4; }
+    52% { opacity: 1; }
+  }
+  .animate-flicker { animation: flicker 3s ease-in-out infinite; }
+
+  .text-stroke-silver {
+    -webkit-text-stroke: 2px hsl(216 44% 91% / 0.35);
+    color: transparent;
+  }
+  .text-stroke-red {
+    -webkit-text-stroke: 2px hsl(0 100% 45% / 0.5);
+    color: transparent;
+  }
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, hsl(240 5% 14% / 0.5) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(240 5% 14% / 0.5) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+  .bg-noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+  }
+}
+
+
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  ::selection {
+    background: hsl(0 100% 45%);
+    color: hsl(0 0% 100%);
+  }
+}
